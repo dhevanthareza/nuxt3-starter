@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  php-apache:
+    container_name: digicracker-front
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4006:80
+    volumes:
+      - ./../.output/public/:/var/www/html/
+      - .htaccess:/var/www/html/.htaccess
+      - ./apache.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./apache/logs:/var/log/apache2
